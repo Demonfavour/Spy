@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — notes on stories, builds, and the process</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EAE6DC;
+    --paper-raised: #F2EFE7;
+    --ink: #201D18;
+    --ink-soft: #4A463E;
+    --pine: #3F5C4E;
+    --ochre: #C08A3E;
+    --line: #C9C2B3;
+    --line-soft: #DAD5C8;
+    --max: 780px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  a{ color: inherit; }
+
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--pine);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Masthead ---------- */
+
+  header.masthead{
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0 0;
+  }
+
+  .masthead-row{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 18px;
+  }
+
+  .logotype{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 0.95;
+  }
+
+  .logotype small{
+    display: block;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.78rem;
+    letter-spacing: 0.01em;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  nav.primary{
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  nav.primary a{
+    text-decoration: none;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  nav.primary a:hover{
+    color: var(--ink);
+    border-color: var(--ochre);
+  }
+
+  .menu-toggle{
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  /* ---------- Hero / featured ---------- */
+
+  .featured{
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.7s ease forwards 0.1s;
+  }
+
+  @keyframes rise{
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  .featured-eyebrow{
+    font-size: 0.86rem;
+    color: var(--pine);
+    margin: 0 0 14px;
+  }
+
+  .featured-grid{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .featured h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    max-width: 14ch;
+  }
+
+  .featured p.dek{
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 22px;
+  }
+
+  .featured .meta{
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .read-link{
+    display: inline-flex;
+    align-items: center;
+    margin-top: 22px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+  }
+
+  .featured-frame{
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(155deg, #33463B 0%, #24332A 70%);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-frame::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(234,230,220,0.05) 0px, rgba(234,230,220,0.05) 1px, transparent 1px, transparent 26px);
+  }
+
+  .frame-count{
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem;
+    color: rgba(234,230,220,0.75);
+    letter-spacing: 0.04em;
+  }
+
+  .frame-count strong{
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 2.4rem;
+    color: #EAE6DC;
+    font-weight: 500;
+  }
+
+  /* ---------- Post index ---------- */
+
+  .index-section{
+    padding: 52px 0 24px;
+  }
+
+  .index-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+  }
+
+  .index-heading h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .index-heading span{
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .post-row{
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 22px;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-soft);
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .post-row:hover .post-title{
+    color: var(--pine);
+  }
+
+  .post-num{
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    padding-top: 3px;
+  }
+
+  .post-title{
+    font-family: 'Fraunces', serif;
+    font-size: 1.28rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0 0 6px;
+    transition: color 0.15s ease;
+  }
+
+  .post-excerpt{
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin: 0;
+  }
+
+  .post-meta{
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    text-align: right;
+    padding-top: 3px;
+  }
+
+  .post-tag{
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.78rem;
+    color: var(--ochre);
+  }
+
+  /* ---------- Sidebar-ish about strip ---------- */
+
+  .about-strip{
+    padding: 48px 0 56px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-strip h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin: 0 0 12px;
+  }
+
+  .about-strip p{
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    max-width: 60ch;
+  }
+
+  .signup{
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px;
+  }
+
+  .signup form{
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .signup input[type="email"]{
+    flex: 1 1 200px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.94rem;
+  }
+
+  .signup button{
+    padding: 10px 18px;
+    background: var(--pine);
+    color: var(--paper);
+    border: none;
+    border-radius: 3px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.94rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .signup button:hover{
+    background: #34493D;
+  }
+
+  .signup .note{
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    padding: 26px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+  }
+
+  footer .socials{
+    display: flex;
+    gap: 16px;
+  }
+
+  footer a{ text-decoration: none; }
+  footer a:hover{ color: var(--ink); }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 760px){
+    .featured-grid{ grid-template-columns: 1fr; }
+    .featured-frame{ aspect-ratio: 16/9; order: -1; }
+    .about-strip{ grid-template-columns: 1fr; }
+    .post-row{ grid-template-columns: 32px 1fr; }
+    .post-meta{ grid-column: 2; text-align: left; padding-top: 0; }
+    nav.primary{
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      padding: 14px 0 18px;
+      gap: 14px;
+    }
+    nav.primary.open{ display: flex; }
+    .menu-toggle{ display: inline-block; }
+    .masthead-row{ flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <h1 class="logotype">Rough&nbsp;Cut
+      <small>Stories, builds, and everything left on the cutting-room floor</small>
+    </h1>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+  </div>
+  <div class="wrap">
+    <nav class="primary" id="primaryNav">
+      <a href="#writing">Writing</a>
+      <a href="#building">Building</a>
+      <a href="#about">About</a>
+      <a href="#subscribe">Subscribe</a>
+    </nav>
+  </div>
+</header>
+
+<section class="featured wrap">
+  <div class="featured-grid">
+    <div>
+      <p class="featured-eyebrow">Latest entry</p>
+      <h1>What editing a short film taught me about pacing a story</h1>
+      <p class="dek">Every scene earns its place or it gets cut. The same rule turned out to be the best writing advice I never asked for — and it changed how I structure everything from essays to product pitches.</p>
+      <p class="meta">Oloruntoba Favour, September 3, 2026, 7 min read</p>
+      <a href="#" class="read-link">Read the full entry</a>
+    </div>
+    <div class="featured-frame">
+      <div class="frame-count">
+        Scene<strong>04</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="index-section wrap" id="writing">
+  <div class="index-heading">
+    <h2>Recent entries</h2>
+    <span>12 posts</span>
+  </div>
+
+  <a href="#" class="post-row">
+    <span class="post-num">03</span>
+    <div>
+      <h3 class="post-title">Building in public without turning your feed into a highlight reel</h3>
+      <p class="post-excerpt">Most build-in-public advice is really personal-branding advice in disguise. Here's the difference, and why it matters once people are actually watching.</p>
+      <span class="post-tag">Building</span>
+    </div>
+    <span class="post-meta">Aug 27, 2026</span>
+  </a>
+
+  <a href="#" class="post-row">
+    <span class="post-num">02</span>
+    <div>
+      <h3 class="post-title">The three-act structure works on a landing page too</h3>
+      <p class="post-excerpt">Setup, confrontation, resolution — the same shape that carries a screenplay can carry a homepage, if you're willing to cut the parts that don't earn attention.</p>
+      <span class="post-tag">Writing</span>
+    </div>
+    <span class="post-meta">Aug 14, 2026</span>
+  </a>
+
+  <a href="#" class="post-row">
+    <span class="post-num">01</span>
+    <div>
+      <h3 class="post-title">Starting a blog as a computer science student, not a writer</h3>
+      <p class="post-excerpt">I'm not trained in prose. I'm trained in systems. It turns out that's not a disadvantage — it's just a different toolkit for the same problem: getting an idea across clearly.</p>
+      <span class="post-tag">About this blog</span>
+    </div>
+    <span class="post-meta">Aug 2, 2026</span>
+  </a>
+</section>
+
+<section class="about-strip wrap" id="about">
+  <div>
+    <h3>Who's writing this</h3>
+    <p>Oloruntoba Favour — goes by Ghostuser. Computer science student at Crawford University, building small products on the side and thinking too much about how stories are put together.</p>
+    <p>This is the place where the thinking gets written down.</p>
+  </div>
+  <div class="signup" id="subscribe">
+    <h3>Get new entries by email</h3>
+    <p>One note whenever something new goes up. No highlight reels, no noise.</p>
+    <form onsubmit="event.preventDefault(); document.getElementById('formNote').textContent='Thanks — check your inbox to confirm.';">
+      <input type="email" placeholder="you@example.com" required aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="note" id="formNote">Sent roughly twice a month.</p>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Rough Cut. Written by Oloruntoba Favour.</span>
+  <div class="socials">
+    <a href="#">Twitter</a>
+    <a href="#">GitHub</a>
+    <a href="#">RSS</a>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('primaryNav');
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>

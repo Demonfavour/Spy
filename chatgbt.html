@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOVA Journal - a modern four-star editorial blog for technology, lifestyle, culture and real-world updates.">
+  <title>NOVA Journal | Stories Worth Your Time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <span>★ 4.8/5 reader rating</span>
+    <span>Independent stories • Updated 8 September 2026</span>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="#home">NOVA<span>.</span></a>
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#latest">Latest</a>
+      <a href="#tech">Technology</a>
+      <a href="#lifestyle">Lifestyle</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
+      <button class="account-btn" id="accountBtn">Sign in</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
+
+  <div class="search-panel" id="searchPanel">
+    <input id="searchInput" type="search" placeholder="Search stories, topics, authors...">
+    <button id="clearSearch">Clear</button>
+  </div>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">EDITOR'S PICK • REAL WORLD</span>
+        <h1>Stories for people who want to know <em>what's next.</em></h1>
+        <p>NOVA is a modern editorial journal covering technology, culture, people, lifestyle and the small details that make the world interesting.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#latest">Explore stories →</a>
+          <button class="ghost-btn" id="subscribeHero">Join 12,400+ readers</button>
+        </div>
+        <div class="mini-stats">
+          <div><strong>4.8/5</strong><span>reader rating</span></div>
+          <div><strong>1.2M</strong><span>monthly reads</span></div>
+          <div><strong>38</strong><span>countries reached</span></div>
+        </div>
+      </div>
+      <article class="hero-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85" alt="Laptop and smartphone on a desk">
+        <div class="hero-card-overlay">
+          <span class="tag">TECH • FEATURE</span>
+          <h2>The new digital life: why useful technology is becoming more human</h2>
+          <p>By Amara Cole · 8 min read</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="ticker">
+      <span class="ticker-label">LIVE DESK</span>
+      <div id="tickerText">Today: AI, devices and digital culture are moving faster than ever. Stay curious.</div>
+      <span class="live-dot"></span>
+    </section>
+
+    <section class="section" id="latest">
+      <div class="section-heading">
+        <div><span class="eyebrow">FRESH OFF THE DESK</span><h2>Latest stories</h2></div>
+        <a href="#all">View all →</a>
+      </div>
+      <div class="featured-grid">
+        <article class="story featured" data-title="what the latest ai wave means for everyday users">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=85" alt="Abstract artificial intelligence illustration">
+          <div class="story-body">
+            <span class="tag">TECHNOLOGY</span>
+            <h3>What the latest AI wave means for everyday users</h3>
+            <p>AI is moving from novelty to infrastructure. Here are the changes worth paying attention to without the hype.</p>
+            <div class="meta">8 Sep 2026 · 6 min read · ♥ 284</div>
+            <button class="read-btn" data-article="AI">Read story →</button>
+          </div>
+        </article>
+        <article class="story" data-title="the gadgets shaping the next generation of everyday tech">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=85" alt="Laptop on a desk">
+          <div class="story-body">
+            <span class="tag">GADGETS</span>
+            <h3>The gadgets shaping the next generation of everyday tech</h3>
+            <p>Smaller, smarter and increasingly connected: the device trends showing up everywhere.</p>
+            <div class="meta">7 Sep 2026 · 5 min read · ♥ 192</div>
+            <button class="read-btn" data-article="Gadgets">Read story →</button>
+          </div>
+        </article>
+        <article class="story" data-title="how to build a calmer digital routine">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1000&q=85" alt="Notebook, coffee and laptop">
+          <div class="story-body">
+            <span class="tag">LIFESTYLE</span>
+            <h3>How to build a calmer digital routine</h3>
+            <p>Practical ways to keep your phone useful without letting it run your whole day.</p>
+            <div class="meta">6 Sep 2026 · 4 min read · ♥ 156</div>
+            <button class="read-btn" data-article="Routine">Read story →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="tech">
+      <div class="section-heading">
+        <div><span class="eyebrow">REAL-TIME CONTEXT</span><h2>What’s happening now</h2></div>
+        <span class="updated">● Updated regularly</span>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="news-source">REUTERS · 8 SEP 2026</div>
+          <h3>Chipmakers and ASML plan around larger next-generation data-center chips</h3>
+          <p>A major semiconductor story is developing around next-generation EUV tools and larger chip designs.</p>
+          <a href="https://www.reuters.com/world/asia-pacific/asml-work-with-major-chipmakers-use-latest-tools-larger-chips-2026-09-08/" target="_blank" rel="noopener">Read source ↗</a>
+        </article>
+        <article class="news-card">
+          <div class="news-source">THE VERGE · 5 SEP 2026</div>
+          <h3>IFA 2026 showcases a new wave of smart consumer devices</h3>
+          <p>From laptops and projectors to smart-home hardware, the Berlin show is packed with new ideas.</p>
+          <a href="https://www.theverge.com/tech/986867/ifa-2026-smart-home-lights-laptop-robot-vacuum-ai-headphones" target="_blank" rel="noopener">Read source ↗</a>
+        </article>
+        <article class="news-card">
+          <div class="news-source">GOOGLE AI · AUG 2026</div>
+          <h3>Google's latest AI updates point toward more capable everyday tools</h3>
+          <p>A look back at major AI announcements and product developments from August.</p>
+          <a href="https://blog.google/innovation-and-ai/technology/google-ai-updates-august-2026/" target="_blank" rel="noopener">Read source ↗</a>
+        </article>
+      </div>
+      <p class="source-note">NOVA's live desk links to original reporting. Headlines are displayed for editorial context and should be checked at the source for breaking updates.</p>
+    </section>
+
+    <section class="section" id="lifestyle">
+      <div class="section-heading">
+        <div><span class="eyebrow">THE HUMAN SIDE</span><h2>Life, culture & people</h2></div>
+        <a href="#all">More stories →</a>
+      </div>
+      <div class="magazine-grid">
+        <article class="mag-card tall">
+          <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1000&q=85" alt="Live music crowd">
+          <div><div class="tag">CULTURE</div><h3>Why live experiences feel more valuable in a screen-first world</h3><p>People are rediscovering rooms, crowds, music and conversations.</p></div>
+        </article>
+        <article class="mag-card">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85" alt="Friends spending time together">
+          <div><div class="tag">PEOPLE</div><h3>The friendship economy: making time for your people</h3></div>
+        </article>
+        <article class="mag-card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="Person exploring outdoors">
+          <div><div class="tag">TRAVEL</div><h3>Small trips, big reset: the case for nearby adventures</h3></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reviews-section" id="reviews">
+      <div class="section-heading">
+        <div><span class="eyebrow">COMMUNITY</span><h2>Reader reviews</h2></div>
+        <button class="primary-btn" id="reviewBtn">Leave a review</button>
+      </div>
+      <div class="rating-summary">
+        <div class="big-rating">4.8 <span>/ 5</span><div class="stars">★★★★★</div></div>
+        <div class="rating-bars">
+          <div><span>5</span><i><b style="width:86%"></b></i><strong>86%</strong></div>
+          <div><span>4</span><i><b style="width:10%"></b></i><strong>10%</strong></div>
+          <div><span>3</span><i><b style="width:3%"></b></i><strong>3%</strong></div>
+          <div><span>2</span><i><b style="width:1%"></b></i><strong>1%</strong></div>
+          <div><span>1</span><i><b style="width:0%"></b></i><strong>0%</strong></div>
+        </div>
+      </div>
+      <div class="reviews-grid" id="reviewsGrid">
+        <article class="review"><div class="avatar">JM</div><div><strong>Jordan M.</strong><span class="stars">★★★★★</span><p>“Clean, easy to read and actually useful. I love that the stories don't feel like clickbait.”</p><small>2 days ago</small></div></article>
+        <article class="review"><div class="avatar">AK</div><div><strong>Aisha K.</strong><span class="stars">★★★★★</span><p>“The mix of tech and everyday life is perfect. It feels like a blog and a magazine had a very good day.”</p><small>5 days ago</small></div></article>
+        <article class="review"><div class="avatar">DT</div><div><strong>Daniel T.</strong><span class="stars">★★★★☆</span><p>“Beautiful on mobile and desktop. The live update section is my favourite.”</p><small>1 week ago</small></div></article>
+      </div>
+    </section>
+
+    <section class="newsletter" id="subscribe">
+      <div><span class="eyebrow">THE NOVA LETTER</span><h2>One good email. No inbox clutter.</h2><p>Get the week's best stories, reviews and useful ideas in one calm little package.</p></div>
+      <form id="newsletterForm"><input type="email" id="emailInput" placeholder="you@example.com" required><button class="primary-btn">Subscribe</button></form>
+      <p class="form-message" id="newsletterMsg"></p>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="about-copy"><span class="eyebrow">ABOUT NOVA</span><h2>Independent writing for a noisy world.</h2><p>NOVA is a fictional demo publication built to show what a polished modern blog can look like. It includes articles, reviews, comments, ratings, search, newsletter signup, account UI, responsive design and live-source links.</p><button class="ghost-btn" id="feedbackBtn">Send feedback</button></div>
+      <div class="about-card"><span>★ ★ ★ ★ ★</span><strong>4-star editorial experience</strong><p>Thoughtful stories. Useful context. No shouting required.</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><a class="logo" href="#home">NOVA<span>.</span></a><p>Stories worth your time.</p></div>
+    <div><strong>Explore</strong><a href="#latest">Latest</a><a href="#tech">Technology</a><a href="#lifestyle">Lifestyle</a></div>
+    <div><strong>Community</strong><a href="#reviews">Reviews</a><a href="#subscribe">Newsletter</a><a href="#about">About</a></div>
+    <div><strong>Social</strong><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">X / Twitter</a></div>
+    <div class="copyright">© 2026 NOVA Journal. Demo website.</div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <button class="close" id="closeModal">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

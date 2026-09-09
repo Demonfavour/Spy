@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Daily Edit — Fashion, Sport & Life, Told Well</title>
+<meta name="description" content="The Daily Edit is a magazine-style blog covering fashion, sport and everyday living, with reviews and reader comments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="utility-bar">
+  <div class="wrap utility-inner">
+    <span class="utility-date" id="todayDate">Tuesday, 8 September</span>
+    <div class="utility-links">
+      <a href="#newsletter">Join the letter</a>
+      <span class="dot-sep">·</span>
+      <a href="#footer">About</a>
+    </div>
+  </div>
+</div>
+
+<!-- Masthead -->
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <a href="#" class="wordmark">The Daily Edit</a>
+
+    <div class="masthead-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Search articles">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <nav class="primary-nav" id="primaryNav">
+    <a href="#" class="nav-link active" data-filter="all">Front Page</a>
+    <a href="#" class="nav-link" data-filter="fashion">Fashion</a>
+    <a href="#" class="nav-link" data-filter="sport">Sport</a>
+    <a href="#" class="nav-link" data-filter="lifestyle">Lifestyle</a>
+    <a href="#" class="nav-link" data-filter="reviews">Reviews</a>
+  </nav>
+
+  <div class="search-panel" id="searchPanel">
+    <div class="wrap">
+      <input type="search" id="searchInput" placeholder="Search articles, e.g. “marathon shoes” or “capsule wardrobe”" autocomplete="off">
+      <p class="search-hint" id="searchHint"></p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero wrap">
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80" alt="Model in a tailored camel coat standing on a city street" loading="eager">
+      <span class="hero-tag">Fashion</span>
+    </div>
+    <div class="hero-copy">
+      <p class="kicker">Cover story</p>
+      <h1>The quiet return of proper tailoring</h1>
+      <p class="hero-dek">After a decade of loungewear, city wardrobes are stiffening back up. We spoke to three designers about why the blazer is suddenly the hardest-working piece in the closet again.</p>
+      <div class="byline">
+        <img src="https://i.pravatar.cc/64?img=47" alt="" class="avatar">
+        <div>
+          <span class="byline-name">Amara Osei</span>
+          <span class="byline-meta">6 min read · Sept 6</span>
+        </div>
+      </div>
+      <a href="#post-tailoring" class="btn btn-primary">Read the story</a>
+    </div>
+  </section>
+
+  <!-- Featured trio -->
+  <section class="featured wrap">
+    <article class="feature-card" data-category="sport">
+      <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80" alt="Basketball player mid-jump shot on an outdoor court">
+      <div class="feature-body">
+        <span class="tag tag-sport">Sport</span>
+        <h3>Inside the 5am runs that built a comeback season</h3>
+        <p>A knee injury, a year off, and the unglamorous training log that got one striker back to full fitness.</p>
+      </div>
+    </article>
+
+    <article class="feature-card" data-category="lifestyle">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80" alt="Minimalist living room with plants and warm afternoon light">
+      <div class="feature-body">
+        <span class="tag tag-lifestyle">Lifestyle</span>
+        <h3>We tried the four-day work week for a month</h3>
+        <p>Six households, one experiment: what actually happens to chores, sleep and sanity when Friday disappears.</p>
+      </div>
+    </article>
+
+    <article class="feature-card" data-category="reviews">
+      <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=800&q=80" alt="Pair of white running shoes on pavement">
+      <div class="feature-body">
+        <span class="tag tag-reviews">Review</span>
+        <h3>Six marathon shoes, one very tired tester</h3>
+        <div class="stars" aria-label="Rated 4.5 out of 5 stars">★★★★☆</div>
+        <p>We put half a dozen carbon-plate trainers through 40km each. Two surprised us, one nearly ended us.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- Category filter / search results bar -->
+  <section class="filter-bar wrap" id="filterBar">
+    <div class="filter-tabs" role="tablist" aria-label="Filter articles by category">
+      <button class="filter-tab active" data-filter="all">All Stories</button>
+      <button class="filter-tab" data-filter="fashion">Fashion</button>
+      <button class="filter-tab" data-filter="sport">Sport</button>
+      <button class="filter-tab" data-filter="lifestyle">Lifestyle</button>
+      <button class="filter-tab" data-filter="reviews">Reviews</button>
+    </div>
+    <p class="filter-count" id="filterCount"></p>
+  </section>
+
+  <!-- Post grid -->
+  <section class="post-grid wrap" id="postGrid">
+    <!-- Cards injected by script.js -->
+  </section>
+
+  <div class="load-more-wrap">
+    <button class="btn btn-outline" id="loadMoreBtn">Load more stories</button>
+  </div>
+
+  <!-- Reviews / Comments -->
+  <section class="reviews-section" id="post-tailoring">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Reader reviews</p>
+        <h2>What readers are saying</h2>
+      </div>
+
+      <div class="reviews-layout">
+        <div class="rating-summary">
+          <span class="rating-number">4.7</span>
+          <div class="stars stars-lg" aria-label="Average rating 4.7 out of 5">★★★★★</div>
+          <p class="rating-count"><span id="reviewCount">128</span> reviews across fashion, sport &amp; lifestyle</p>
+        </div>
+
+        <div class="reviews-list" id="reviewsList">
+          <div class="review">
+            <div class="review-head">
+              <img src="https://i.pravatar.cc/64?img=32" alt="" class="avatar">
+              <div>
+                <span class="byline-name">Priya Nandan</span>
+                <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              </div>
+              <span class="review-date">2 days ago</span>
+            </div>
+            <p>The tailoring piece talked me into finally getting a blazer fitted properly instead of buying off the rack. Wearing it right now, actually.</p>
+          </div>
+
+          <div class="review">
+            <div class="review-head">
+              <img src="https://i.pravatar.cc/64?img=15" alt="" class="avatar">
+              <div>
+                <span class="byline-name">Femi Adekunle</span>
+                <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+              </div>
+              <span class="review-date">5 days ago</span>
+            </div>
+            <p>Solid shoe review — I went with their second pick and my splits actually held up past 30km. Wish they'd tested wide sizing though.</p>
+          </div>
+
+          <div class="review">
+            <div class="review-head">
+              <img src="https://i.pravatar.cc/64?img=68" alt="" class="avatar">
+              <div>
+                <span class="byline-name">Grace Muthoni</span>
+                <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              </div>
+              <span class="review-date">1 week ago</span>
+            </div>
+            <p>Sent the four-day work week article to my whole team. We're trialling it next quarter because of this.</p>
+          </div>
+        </div>
+
+        <form class="review-form" id="reviewForm">
+          <h3>Leave a review</h3>
+          <div class="star-input" id="starInput" role="radiogroup" aria-label="Choose a star rating">
+            <button type="button" data-value="1" aria-label="1 star">★</button>
+            <button type="button" data-value="2" aria-label="2 stars">★</button>
+            <button type="button" data-value="3" aria-label="3 stars">★</button>
+            <button type="button" data-value="4" aria-label="4 stars">★</button>
+            <button type="button" data-value="5" aria-label="5 stars">★</button>
+          </div>
+          <input type="text" id="reviewName" placeholder="Your name" required>
+          <textarea id="reviewText" rows="3" placeholder="What did you think?" required></textarea>
+          <button type="submit" class="btn btn-primary">Post review</button>
+          <p class="form-note" id="reviewNote" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" id="newsletter">
+    <div class="wrap newsletter-inner">
+      <div>
+        <p class="kicker kicker-light">Twice a week</p>
+        <h2>Get the edit in your inbox</h2>
+        <p>Fashion notes, match reports and the odd life-admin experiment. No spam, unsubscribe whenever.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="you@email.com" required>
+        <button type="submit" class="btn btn-accent">Subscribe</button>
+      </form>
+    </div>
+    <p class="newsletter-note" id="newsletterNote" aria-live="polite"></p>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="wordmark wordmark-footer">The Daily Edit</a>
+      <p>A small, independent magazine about getting dressed, staying active and living a little better. Est. 2021.</p>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="Pinterest">PT</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Sections</h4>
+      <a href="#" data-filter="fashion">Fashion</a>
+      <a href="#" data-filter="sport">Sport</a>
+      <a href="#" data-filter="lifestyle">Lifestyle</a>
+      <a href="#" data-filter="reviews">Reviews</a>
+    </div>
+    <div class="footer-col">
+      <h4>The Edit</h4>
+      <a href="#">About us</a>
+      <a href="#">Write for us</a>
+      <a href="#">Advertise</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© <span id="year"></span> The Daily Edit. All rights reserved.</span>
+    <button id="backToTop" class="back-to-top">Back to top ↑</button>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
